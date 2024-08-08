@@ -66,6 +66,17 @@ document.getElementById("btnDel").addEventListener("click", () => {
     renderizaLista();
 });
 
+document.getElementById("btnOrdem").addEventListener("click", () => {
+    frutas.sort();//Coloca em ordem alfabética
+    renderizaLista();
+});
+
+document.getElementById("btnReverte").addEventListener("click", () => {
+    frutas.reverse();//Reverte a ordem atual.
+    renderizaLista();
+});
+
+
 function renderizaLista() {
     lista.innerHTML = "";
     frutas.forEach(fruta => {
