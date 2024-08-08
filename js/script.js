@@ -86,12 +86,38 @@ document.getElementById("btnAdd").addEventListener("click", ()=>{
     inputFruta.value = "";
 });
 
+// document.getElementById("btnDel").addEventListener("click", () => {
+//     // frutas.pop();//Remove um item do final da lista.
+//     frutas.shift();//Remove um item do início da lista.
+//     renderizaLista();
+// });
 
 document.getElementById("btnDel").addEventListener("click", () => {
-    frutas.pop(); // Remove um item do final da lista
-    frutas.shift(); // Remove um item do início da lista
+    // Recuperando o input onde o nome da fruta é digitado
+    let inputFruta = document.getElementById("idFruta");
+
+    // Passando o valor digitado no campo para o método indexOf para decobrir indice do elemento
+    let indice = frutas.indexOf(inputFruta.value);
+    if (indice > -1) {
+        frutas.splice(indice, 1);
+        renderizaLista();
+    } else {
+        alert("Item não existe na lista!");
+    }
+    inputFruta.value = "";
+});
+
+document.getElementById("btnOrdem").addEventListener("click", () => {
+    frutas.sort(); //Coloca em ordem alfabética
     renderizaLista();
-})
+});
+
+document.getElementById("btnReverte").addEventListener("click", () => {
+    frutas.reverse();//Reverte a ordem atual
+    renderizaLista();
+});
+
+
 
 function renderizaLista(){
     lista.innerHTML = "";
