@@ -54,11 +54,17 @@ document.getElementById("btnAdd").addEventListener("click", () => {
     let inputFruta = document.getElementById("idFruta");
 
     //Passando o valor digitado no campo para o método PUSH()
-    frutas.push(inputFruta.value);
+    // frutas.push(inputFruta.value);Insere no final da lista
+    frutas.unshift(inputFruta.value);//Insere no início da lista
     renderizaLista();
     inputFruta.value = "";
 });
 
+document.getElementById("btnDel").addEventListener("click", () => {
+    // frutas.pop();//Remove um item do final da lista.
+    frutas.shift();//Remove um item do início da lista.
+    renderizaLista();
+});
 
 function renderizaLista() {
     lista.innerHTML = "";
