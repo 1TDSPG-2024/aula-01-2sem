@@ -74,15 +74,35 @@ frutas.forEach(function(fruta){
 // Recuperar a lista ul que está no HTML de id 'lista'
 let lista = document.getElementById("lista");
 
-frutas.forEach(fruta =>{
-    // Criando elementos li para adicionar na lista
-    let elementoLi = document.createElement("li");
-    // Criando texto para adicionar no elemento li
-    elementoLi.textContent = fruta;
-    // Adicionar o elemento li na lista
-    lista.appendChild(elementoLi);
-});
 
 document.getElementById("btnAdd").addEventListener("click", ()=>{
+    //Recuperando o input onde o nome da fruta é digitado
+    let inputFruta = document.getElementById("idFruta");
 
+    // Passando o valor digitado no campo para o método PUSH()
+    // frutas.push(inputFruta.value); //Insere no final da lista
+    frutas.unshift(inputFruta.value);//Insere no início da lista
+    renderizaLista();
+    inputFruta.value = "";
+});
+
+
+document.getElementById("btnDel").addEventListener("click", () => {
+    frutas.pop(); // Remove um item do final da lista
+    frutas.shift(); // Remove um item do início da lista
+    renderizaLista();
 })
+
+function renderizaLista(){
+    lista.innerHTML = "";
+    frutas.forEach(fruta =>{
+        //Criando elementos li para adicionar na lista
+        let elementoLi = document.createElement("li");
+        //Criando texto para adicionar no elemento li
+        elementoLi.textContent = fruta;
+        //Adicionar o elemento li na lista
+        lista.appendChild(elementoLi);
+    });   
+}
+
+renderizaLista();
