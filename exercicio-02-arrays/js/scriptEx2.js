@@ -18,6 +18,20 @@ document.getElementById("btnAdd").addEventListener("click", ()=>{
     input.value = ""
 })
 
+document.getElementById("btnDel").addEventListener("click", ()=>{
+    let input = document.getElementById("idNome");
+
+    let indice = nomes.indexOf(input.value)
+    if (indice > -1){
+        nomes.splice(input.value, 1);
+        atualiza_pagina()
+    }
+    else{
+        alert("Nome não encontrado")
+    }
+    input.value = ""
+})
+
 document.getElementById("btnOrdem").addEventListener("click", ()=>{
     nomes.sort();
     atualiza_pagina()
